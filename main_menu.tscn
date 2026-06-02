@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://l7riklovh8aa"]
+
+[ext_resource type="Script" uid="uid://c64v2ayjw1gow" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 649.0
+script = ExtResource("1_06t4h")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+color = Color(0.121569, 0.0509804, 0.14902, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 65.0
+offset_right = 780.0
+offset_bottom = 166.0
+theme_override_font_sizes/font_size = 36
+text = "🍣 SUSHI DASH DELIVERY 🍣"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="."]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 131.0
+offset_right = 668.0
+offset_bottom = 159.0
+text = "Deliver sushi. Slice your way to glory."
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 191.0
+offset_right = 668.0
+offset_bottom = 369.0
+theme_override_font_sizes/font_size = 9
+text = "HOW TO PLAY:
+
+🗺️  Navigate the map with WASD / Arrow Keys
+📦  Reach glowing customers to pick up orders
+🏠  Deliver orders to their destination
+🔪  Play the Sushi Slice minigame to earn bonus points!
+
+SLICE: Click and drag across sushi
+AVOID: Wasabi Bombs 💣  Expired Fish 🐟  Hot Peppers 🌶
+COMBO: Slice multiple sushi in one swipe for bonus multiplier!"
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 437.0
+offset_top = 390.0
+offset_right = 612.0
+offset_bottom = 428.0
+text = "▶  START DELIVERING"

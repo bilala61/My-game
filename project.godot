@@ -10,7 +10,12 @@ config_version=5
 
 [application]
 
+run/main_scene="uid://xqpyc2phaefu"
 config/features=PackedStringArray("4.4")
+
+[display]
+
+window/stretch/scale=4.0
 
 [rendering]
 

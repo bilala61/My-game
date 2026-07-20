@@ -10,12 +10,16 @@ config_version=5
 
 [application]
 
-run/main_scene="uid://xqpyc2phaefu"
+run/main_scene="uid://dvksddvbjiojv"
 config/features=PackedStringArray("4.4")
 
 [display]
 
 window/stretch/scale=4.0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AS2P/plugin.cfg")
 
 [rendering]
 

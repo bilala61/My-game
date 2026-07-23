@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://dvuiex2vi217g" path="res://script 2 game/player.gd" id="1_536x0"]
 [ext_resource type="Texture2D" uid="uid://dim3jp6s8xnur" path="res://sprites/characters/player.png" id="2_yg8oj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_536x0"]
-size = Vector2(20, 23)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfoy0"]
 atlas = ExtResource("2_yg8oj")
 region = Rect2(0, 96, 48, 48)
@@ -416,16 +413,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_536x0"]
+radius = 6.0
+
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_536x0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 10.5)
-shape = SubResource("RectangleShape2D_536x0")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 1.22248)
+position = Vector2(5.96046e-08, 8.47033e-22)
 scale = Vector2(1.57082, 1.2176)
 sprite_frames = SubResource("SpriteFrames_rpxes")
 animation = &"Front Idle"
 frame_progress = 0.223599
+offset = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_536x0")

@@ -44,14 +44,23 @@ texture = ExtResource("2_yothm")
 texture = ExtResource("3_7vj77")
 6:7/size_in_atlas = Vector2i(2, 2)
 6:7/0 = 0
+6:7/0/y_sort_origin = 9
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.4049, 6.7465, -1.5234, 8, 5.87598, 8, 14.7988, 6.7465, 10.4462, 11.9696, -1.30577, 10.8815, -12.8401, 10.2286, -16.1045, 10.4462, -15.8869, 6.7465)
 8:6/size_in_atlas = Vector2i(2, 3)
 8:6/0 = 0
+8:6/0/y_sort_origin = 17
+8:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.09809, 15.6129, 4.1422, 16.2502, 7.00988, 20.711, -0.31863, 21.9855, -7.32851, 20.0737)
 10:7/size_in_atlas = Vector2i(2, 2)
 10:7/0 = 0
+10:7/0/y_sort_origin = 5
+10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.8401, 1.30577, -3.26443, 1.74103, 8, 1.52341, 11.3167, 1.74103, 13.0577, 8.26991, 0.870516, 9.79331, -7.39939, 9.79331, -12.4049, 5.44073)
 0:5/size_in_atlas = Vector2i(3, 4)
 0:5/0 = 0
+0:5/0/y_sort_origin = 20
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.1666, 24.4898, -12.7452, 17.8433, -11.7893, 12.7452, 8.2844, 11.1521, 12.9032, 14.4832, 11.1521, 26.765, -6.05398, 26.4464)
 
 [sub_resource type="TileSet" id="TileSet_ioo17"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dwbse")
 sources/5 = SubResource("TileSetAtlasSource_pkg7o")
 sources/6 = SubResource("TileSetAtlasSource_gbfbk")
@@ -59,6 +68,7 @@ sources/6 = SubResource("TileSetAtlasSource_gbfbk")
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_ioo17")
 format = 2
 layer_0/name = "Ground"
@@ -66,6 +76,7 @@ layer_0/tile_data = PackedInt32Array(262153, 5, 0, 262152, 5, 0, 262151, 5, 0, 2
 layer_1/name = "cliff"
 layer_1/tile_data = PackedInt32Array(24, 131072, 5, 23, 131072, 5, 22, 131072, 5, 21, 131072, 5, 20, 131072, 5, 18, 131072, 5, 19, 131072, 5, 17, 131072, 5, 16, 131072, 5, 65551, 65536, 6, 15, 65536, 5, 65552, 131072, 6, 65553, 327680, 4, 131089, 65536, 6, 131090, 131072, 6, 131091, 131072, 6, 131092, 131072, 6, 131093, 131072, 6, 131094, 131072, 6, 131095, 131072, 6, 131096, 131072, 6, 65554, 131072, 5, 65555, 131072, 5, 65556, 131072, 5, 65557, 131072, 5, 65558, 131072, 5, 65559, 131072, 5, 65560, 131072, 5)
 layer_2/name = "ysort"
+layer_2/y_sort_enabled = true
 layer_2/tile_data = PackedInt32Array(1114116, 6, 5, 65544, 6, 5, 786443, 6, 5, 786434, 6, 5, 786450, 6, 5, 1114126, 6, 5, 1048593, 6, 5, 655383, 6, 5, 196627, 6, 5, 786447, 393222, 7, 1179664, 393222, 7, 1245197, 393222, 7, 1179667, 393222, 7, 1376273, 393222, 7, 917519, 393222, 7, 1048588, 393222, 7, 1245194, 393222, 7, 917526, 393222, 7, 589844, 393222, 7, 983050, 393222, 7, 327685, 393222, 7, 262153, 393222, 7, 131086, 393222, 7, 393233, 393222, 7, 983042, 393222, 7, 1048584, 393222, 7, 1245190, 524294, 6, 983046, 524294, 6, 131077, 524294, 6, 131083, 524294, 6, 1114133, 524294, 6, 851994, 524294, 6, 196634, 524294, 6, 1114113, 655366, 7, 1179656, 655366, 7, 262161, 655366, 7, 196631, 655366, 7, 3, 655366, 7, 262150, 655366, 7)
 
 [node name="Player" parent="." instance=ExtResource("4_yothm")]

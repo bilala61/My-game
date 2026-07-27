@@ -418,6 +418,8 @@ radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_536x0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -429,5 +431,6 @@ frame_progress = 0.223599
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 3
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_536x0")

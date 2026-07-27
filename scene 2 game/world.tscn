@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://dvksddvbjiojv"]
+[gd_scene load_steps=10 format=4 uid="uid://dvksddvbjiojv"]
 
 [ext_resource type="Texture2D" uid="uid://dxfy2rwfy6nnf" path="res://sprites/tilesets/plains.png" id="1_s87md"]
 [ext_resource type="Texture2D" uid="uid://cm1645yxibabs" path="res://sprites/tilesets/grass.png" id="2_yothm"]
 [ext_resource type="Texture2D" uid="uid://d4g8iboywveeo" path="res://sprites/objects/objects.png" id="3_7vj77"]
+[ext_resource type="PackedScene" uid="uid://dvuld1wn7qt0v" path="res://enemy.tscn" id="4_7vj77"]
 [ext_resource type="PackedScene" uid="uid://xqpyc2phaefu" path="res://scene 2 game/player.tscn" id="4_yothm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwbse"]
@@ -45,7 +46,7 @@ texture = ExtResource("3_7vj77")
 6:7/size_in_atlas = Vector2i(2, 2)
 6:7/0 = 0
 6:7/0/y_sort_origin = 9
-6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.4049, 6.7465, -1.5234, 8, 5.87598, 8, 14.7988, 6.7465, 10.4462, 11.9696, -1.30577, 10.8815, -12.8401, 10.2286, -16.1045, 10.4462, -15.8869, 6.7465)
+6:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.4049, 6.7465, -1.5234, 8, 5.87598, 8, 14.7988, 6.7465, 11.511, 14.3887, -0.899294, 15.288, -10.7915, 14.5686, -16.1045, 10.4462, -15.8869, 6.7465)
 8:6/size_in_atlas = Vector2i(2, 3)
 8:6/0 = 0
 8:6/0/y_sort_origin = 17
@@ -53,7 +54,7 @@ texture = ExtResource("3_7vj77")
 10:7/size_in_atlas = Vector2i(2, 2)
 10:7/0 = 0
 10:7/0/y_sort_origin = 5
-10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.8401, 1.30577, -3.26443, 1.74103, 8, 1.52341, 11.3167, 1.74103, 13.0577, 8.26991, 0.870516, 9.79331, -7.39939, 9.79331, -12.4049, 5.44073)
+10:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.8401, 1.30577, -11.1512, -1.97845, 0.539576, -1.25901, 9.53251, -1.97845, 11.3167, 1.74103, 13.0577, 8.26991, 0.870516, 9.79331, -7.39939, 9.79331, -12.4049, 5.44073)
 0:5/size_in_atlas = Vector2i(3, 4)
 0:5/0 = 0
 0:5/0/y_sort_origin = 20
@@ -79,10 +80,17 @@ tile_set = SubResource("TileSet_ioo17")
 
 [node name="Player" parent="." instance=ExtResource("4_yothm")]
 position = Vector2(15, 51)
+collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
+
+[node name="enemy" parent="." instance=ExtResource("4_7vj77")]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(307, 132)
+collision_mask = 3
 
 [node name="trees" type="TileMapLayer" parent="."]
 y_sort_enabled = true

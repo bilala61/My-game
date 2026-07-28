@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 run/main_scene="uid://dvksddvbjiojv"
-config/features=PackedStringArray("4.7")
+config/features=PackedStringArray("4.4")
 
 [display]
 
@@ -24,6 +24,10 @@ window/stretch/scale=4.0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AS2P/plugin.cfg")
+
+[global_group]
+
+enemy=""
 
 [input]
 

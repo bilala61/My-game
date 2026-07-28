@@ -84,7 +84,9 @@ func player():
 
 
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	print("Something entered: ", body.name) #
 	if body.has_method("enemy"):
+	#if body.is_in_group("enemy"):
 		enemy_inattack_range = true 
 
 
@@ -96,3 +98,11 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 func enemy_attack():
 	if enemy_inattack_range:
 		print("player took damage")
+
+
+func _on_Player_hitbox_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_Player_hitbox_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

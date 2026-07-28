@@ -1,11 +1,8 @@
-[gd_scene format=3 uid="uid://dvuld1wn7qt0v"]
+[gd_scene load_steps=28 format=3 uid="uid://dvuld1wn7qt0v"]
 
 [ext_resource type="Texture2D" uid="uid://10pcrudlfyy3" path="res://sprites/characters/death.png" id="1_4gyqm"]
 [ext_resource type="Script" uid="uid://bkb1880vwoqbn" path="res://enemy.gd" id="1_qi2p4"]
 [ext_resource type="Texture2D" uid="uid://c3n0ruj5ytqan" path="res://sprites/characters/donut_spritesheet.png" id="2_qi2p4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
-radius = 8.06226
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4gyqm"]
 atlas = ExtResource("1_4gyqm")
@@ -105,7 +102,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_epc7x")
 }],
-"loop": 1,
+"loop": true,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -125,7 +122,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e1ltt")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -160,10 +157,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_otto8")
 }],
-"loop": 1,
+"loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
+radius = 6.08276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 69.0072
@@ -171,32 +171,34 @@ radius = 69.0072
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 15.0
 
-[node name="enemy" type="CharacterBody2D" unique_id=260747797]
+[node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_qi2p4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1558917929]
-light_mask = 2
-visibility_layer = 3
-position = Vector2(0, -7)
-shape = SubResource("CircleShape2D_epg4t")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1616664877]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8q82m")
 animation = &"death"
 offset = Vector2(0, -6)
 
-[node name="detection area" type="Area2D" parent="." unique_id=225138935]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+light_mask = 2
+visibility_layer = 3
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_epg4t")
+
+[node name="detection area" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection area" unique_id=83670483]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection area"]
 shape = SubResource("CircleShape2D_iifgy")
 
-[node name="enemy hitbox" type="Area2D" parent="." unique_id=2145264193]
+[node name="enemy hitbox" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy hitbox" unique_id=895119071]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy hitbox"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_g4v7s")
 

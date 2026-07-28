@@ -29,6 +29,8 @@ func _physics_process(delta):
 		
 		$AnimatedSprite2D.play("idle")
 
+
+	
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	player = body
 	player_chase = true
@@ -36,6 +38,7 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	player = null 
 	player_chase = false
+	
 
-func enemy_attack():
+func enemy():
 	pass

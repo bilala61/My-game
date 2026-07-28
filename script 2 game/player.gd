@@ -1,5 +1,11 @@
 extends CharacterBody2D
 
+var enemy_inattack_range = false
+var enemy_attack_cooldown = true 
+var health = 100
+var player_alive = true 
+
+
 const speed = 100
 var current_dir = "none"
 
@@ -10,6 +16,7 @@ func _ready():
 
 func _physics_process(delta):
 	player_movement(delta)
+	enemy_attack()
 
 func player_movement(delta):
 	pass
@@ -71,5 +78,21 @@ func play_anim(movement):
 			anim.play("Back walk")
 		elif movement == 0:
 			anim.play("Back Idle")
-	
-	
+
+func player():
+	pass 
+
+
+func _on_player_hitbox_body_entered(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_inattack_range = true 
+
+
+func _on_player_hitbox_body_exited(body: Node2D) -> void:
+	if body.has_method("enemy"):
+		enemy_inattack_range = false
+
+
+func enemy_attack():
+	if enemy_inattack_range:
+		print("player took damage")

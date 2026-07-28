@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://xqpyc2phaefu"]
+[gd_scene format=3 uid="uid://xqpyc2phaefu"]
 
 [ext_resource type="Script" uid="uid://dvuiex2vi217g" path="res://script 2 game/player.gd" id="1_536x0"]
 [ext_resource type="Texture2D" uid="uid://dim3jp6s8xnur" path="res://sprites/characters/player.png" id="2_yg8oj"]
@@ -228,7 +228,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0r50a")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Back Idle",
 "speed": 5.0
 }, {
@@ -245,7 +245,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_axc1e")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Back attack ",
 "speed": 5.0
 }, {
@@ -268,7 +268,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fmmd1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Back walk",
 "speed": 5.0
 }, {
@@ -282,7 +282,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3j8og")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Death ",
 "speed": 5.0
 }, {
@@ -305,7 +305,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_87uyp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Front Idle",
 "speed": 5.0
 }, {
@@ -322,7 +322,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i6a3b")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Front attack",
 "speed": 5.0
 }, {
@@ -345,7 +345,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k56pm")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Front walk",
 "speed": 5.0
 }, {
@@ -368,7 +368,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fpb82")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Side Idle",
 "speed": 5.0
 }, {
@@ -385,7 +385,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7vawg")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Side attack",
 "speed": 5.0
 }, {
@@ -408,7 +408,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2enir")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Side walk",
 "speed": 5.0
 }]
@@ -416,13 +416,16 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_536x0"]
 radius = 6.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 17.029387
+
+[node name="Player" type="CharacterBody2D" unique_id=555142962]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_536x0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1341840203]
 position = Vector2(5.96046e-08, 8.47033e-22)
 scale = Vector2(1.57082, 1.2176)
 sprite_frames = SubResource("SpriteFrames_rpxes")
@@ -430,7 +433,16 @@ animation = &"Front Idle"
 frame_progress = 0.223599
 offset = Vector2(0, -15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1103764281]
 visibility_layer = 3
 position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_536x0")
+
+[node name="Playe hitbox" type="Area2D" parent="." unique_id=1040602002]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Playe hitbox" unique_id=1529092616]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[connection signal="body_entered" from="Playe hitbox" to="." method="_on_playe_hitbox_body_entered"]
+[connection signal="body_exited" from="Playe hitbox" to="." method="_on_playe_hitbox_body_exited"]

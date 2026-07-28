@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dvuld1wn7qt0v"]
+[gd_scene format=3 uid="uid://dvuld1wn7qt0v"]
 
 [ext_resource type="Texture2D" uid="uid://10pcrudlfyy3" path="res://sprites/characters/death.png" id="1_4gyqm"]
 [ext_resource type="Script" uid="uid://bkb1880vwoqbn" path="res://enemy.gd" id="1_qi2p4"]
@@ -105,7 +105,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_epc7x")
 }],
-"loop": true,
+"loop": 1,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -125,7 +125,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e1ltt")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -160,7 +160,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_otto8")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -168,28 +168,39 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
 radius = 69.0072
 
-[node name="enemy" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 15.0
+
+[node name="enemy" type="CharacterBody2D" unique_id=260747797]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_qi2p4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1558917929]
 light_mask = 2
 visibility_layer = 3
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_epg4t")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1616664877]
 sprite_frames = SubResource("SpriteFrames_8q82m")
 animation = &"death"
 offset = Vector2(0, -6)
 
-[node name="detection area" type="Area2D" parent="."]
+[node name="detection area" type="Area2D" parent="." unique_id=225138935]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="detection area"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection area" unique_id=83670483]
 shape = SubResource("CircleShape2D_iifgy")
+
+[node name="enemy hitbox" type="Area2D" parent="." unique_id=2145264193]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy hitbox" unique_id=895119071]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_g4v7s")
 
 [connection signal="body_entered" from="detection area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="enemy hitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="enemy hitbox" to="." method="_on_enemy_hitbox_body_exited"]

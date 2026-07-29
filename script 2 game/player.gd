@@ -17,6 +17,12 @@ func _ready():
 func _physics_process(delta):
 	player_movement(delta)
 	enemy_attack()
+	
+	if health <= 0:
+		player_alive = false #go back to menu 
+		health = 0 
+		print ("player has been killed")
+		self.queue_free()
 
 func player_movement(delta):
 	pass
@@ -96,13 +102,15 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 
 
 func enemy_attack():
-	if enemy_inattack_range:
-		print("player took damage")
+	if enemy_inattack_range and enemy_attack_cooldown == true:
+		health - 20
+		enemy_attack_cooldown = false
+		$"attack cooldown".start()
+		print(health)
 
 
-func _on_Player_hitbox_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
 
 
-func _on_Player_hitbox_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+
+func _on_attack_cooldown_timeout() -> void:
+	enemy_attack_cooldown = true

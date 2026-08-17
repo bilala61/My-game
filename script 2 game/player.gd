@@ -19,7 +19,7 @@ func _physics_process(delta):
 	enemy_attack()
 	
 	if health <= 0:
-		player_alive = false #go back to menu 
+		player_alive = false #respawn
 		health = 0 
 		print ("player has been killed")
 		self.queue_free()
@@ -103,7 +103,7 @@ func _on_player_hitbox_body_exited(body: Node2D) -> void:
 
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health - 20
+		health -= 20
 		enemy_attack_cooldown = false
 		$"attack cooldown".start()
 		print(health)

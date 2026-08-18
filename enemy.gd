@@ -42,3 +42,7 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 
 func enemy():
 	pass
+
+
+func _on_enemy_hitbox_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

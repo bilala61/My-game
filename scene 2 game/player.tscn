@@ -429,8 +429,7 @@ script = ExtResource("1_536x0")
 position = Vector2(5.96046e-08, 8.47033e-22)
 scale = Vector2(1.57082, 1.2176)
 sprite_frames = SubResource("SpriteFrames_rpxes")
-animation = &"Front Idle"
-frame_progress = 0.223599
+animation = &"Front walk"
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

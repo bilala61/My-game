@@ -324,7 +324,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Front attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -429,7 +429,7 @@ script = ExtResource("1_536x0")
 position = Vector2(5.96046e-08, 8.47033e-22)
 scale = Vector2(1.57082, 1.2176)
 sprite_frames = SubResource("SpriteFrames_rpxes")
-animation = &"Front walk"
+animation = &"Front attack"
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -447,6 +447,10 @@ shape = SubResource("CircleShape2D_g4v7s")
 [node name="attack cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="deal_attack_timer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="Player hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="Player hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]

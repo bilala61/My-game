@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true 
-var health = 100
+var health = 160
 var player_alive = true
  
 var attack_ip = false 
@@ -147,3 +147,11 @@ func _on_deal_attack_timer_timeout() -> void:
 	$deal_attack_timer.stop()
 	Global.player_current_attack = false
 	attack_ip = false
+
+
+func _on_cliffside_transition_point_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_cliffside_transition_point_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

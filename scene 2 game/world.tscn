@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://dvksddvbjiojv"]
+[gd_scene load_steps=14 format=4 uid="uid://dvksddvbjiojv"]
 
+[ext_resource type="Script" uid="uid://cowbso2p4o80d" path="res://scene 2 game/world.gd" id="1_5g83u"]
 [ext_resource type="Texture2D" uid="uid://dxfy2rwfy6nnf" path="res://sprites/tilesets/plains.png" id="1_s87md"]
 [ext_resource type="Texture2D" uid="uid://cm1645yxibabs" path="res://sprites/tilesets/grass.png" id="2_yothm"]
 [ext_resource type="Texture2D" uid="uid://d4g8iboywveeo" path="res://sprites/objects/objects.png" id="3_7vj77"]
 [ext_resource type="PackedScene" uid="uid://dvuld1wn7qt0v" path="res://enemy.tscn" id="4_7vj77"]
 [ext_resource type="PackedScene" uid="uid://xqpyc2phaefu" path="res://scene 2 game/player.tscn" id="4_yothm"]
+[ext_resource type="PackedScene" uid="uid://d2t670jy0bwb8" path="res://exit.tscn" id="7_xx22k"]
+[ext_resource type="PackedScene" uid="uid://clere0sy6dnw1" path="res://scenes.tscn" id="8_luc84"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwbse"]
 texture = ExtResource("1_s87md")
@@ -66,7 +69,11 @@ sources/0 = SubResource("TileSetAtlasSource_dwbse")
 sources/5 = SubResource("TileSetAtlasSource_pkg7o")
 sources/6 = SubResource("TileSetAtlasSource_gbfbk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x8ct"]
+size = Vector2(45, 47)
+
 [node name="World" type="Node2D"]
+script = ExtResource("1_5g83u")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -79,7 +86,7 @@ tile_map_data = PackedByteArray("AAAYAAAAAAACAAUAAAAXAAAAAAACAAUAAAAWAAAAAAACAAU
 tile_set = SubResource("TileSet_ioo17")
 
 [node name="Player" parent="." instance=ExtResource("4_yothm")]
-position = Vector2(15, 51)
+position = Vector2(21, 67)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -102,3 +109,19 @@ tile_set = SubResource("TileSet_ioo17")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
 polygon = PackedVector2Array(-1, 1, 400, 1, 399, 83, 446, 83, 446, 128, 399, 128, 399, 128, 399, 315, -11, 315, -8, 0, -90, 68, -92, 192, -128, 333, -97, 414, 22, 450, 152, 444, 279, 437, 446, 424, 556, 376, 536, 249, 530, 159, 515, 71, 503, 20, 460, -20, 394, -44, 294, -62, 196, -63, 118, -68, 70, -68, -5, -1)
+
+[node name="cliffside_transition_point" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cliffside_transition_point"]
+position = Vector2(424.5, 105.5)
+shape = SubResource("RectangleShape2D_8x8ct")
+
+[node name="EXIT" parent="." instance=ExtResource("7_xx22k")]
+position = Vector2(425, 104)
+collision_layer = 3
+collision_mask = 3
+
+[node name="cliffside" parent="." instance=ExtResource("8_luc84")]
+
+[connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
+[connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]

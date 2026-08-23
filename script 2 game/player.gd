@@ -147,11 +147,3 @@ func _on_deal_attack_timer_timeout() -> void:
 	$deal_attack_timer.stop()
 	Global.player_current_attack = false
 	attack_ip = false
-
-
-func _on_cliffside_transition_point_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_cliffside_transition_point_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.

@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://clere0sy6dnw1"]
 
 [node name="cliffside" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 64.0
+offset_bottom = 40.0
+text = "you have won the game!"
